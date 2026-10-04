@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Swasthika | Product Designer</title>
+<meta name="description" content="Product and UI/UX designer solving problems that make people smile and businesses scale.">
+<link rel="icon" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@400;500;600&family=Wix+Madefor+Display:wght@400&display=swap" rel="stylesheet">
+<style>
+/* Aileron isn't on Google Fonts. Drop Aileron-Regular.woff2 into /fonts to use it; otherwise the fallback is used. */
+@font-face{font-family:"Aileron";font-weight:400;src:url("fonts/Aileron-Regular.woff2") format("woff2");font-display:swap}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#f8f8f8}
+body{overflow-x:hidden}
+#fit{position:relative;width:100%;overflow:hidden}
+/* Figma frame "Desktop - 1": 1440 x 3296 */
+#stage{position:absolute;left:0;top:0;width:1440px;height:3296px;overflow:hidden;background:#f8f8f8;transform-origin:0 0}
+#stage>*{position:absolute}
+#stage a{color:inherit;text-decoration:none}
+.t{white-space:nowrap;line-height:normal}
+.funnel{font-family:"Funnel Display",sans-serif}
+.wix{font-family:"Wix Madefor Display",sans-serif;font-weight:400}
+.ail{font-family:"Aileron","Wix Madefor Display",sans-serif;font-weight:400}
+
+/* dot grid: 100x100 ellipses 3.51x4.17, #171717 @ 3% */
+#dots{left:-470px;top:-20px;width:2786px;height:3306px;
+  background-image:radial-gradient(ellipse 1.756px 2.085px at 1.756px 2.085px,rgba(23,23,23,.03) 97%,transparent 100%);
+  background-size:28.1px 33.35px;pointer-events:none}
+
+#logo{left:39px;top:27px;width:82px;height:82px;display:block}
+#logo img{width:82px;height:82px;display:block}
+.nav{top:55px;font-size:20px;color:#171717;height:25px}
+.nav:hover{text-decoration:underline!important;text-underline-offset:5px}
+
+#avatar{left:524px;top:222px;width:78px;height:78px;border-radius:50%;object-fit:cover;background:#d9d9d9}
+#hi{left:620px;top:242px;font-size:32px;color:#362424}
+#h1{left:313px;top:321px;width:813px;text-align:center;font-weight:600;font-size:96px;color:#362424}
+#sub{left:379px;top:445px;width:682px;text-align:center;font-size:36px;color:#171717}
+
+#cta{left:616px;top:522px;width:209px;height:53px;border-radius:100px;background:#362424;color:#fff;display:block;transition:transform .15s}
+#cta:hover{transform:translateY(-2px)}
+#cta span{position:absolute;left:33px;top:0;line-height:53px;font-size:24px;font-weight:400;white-space:nowrap}
+#cta svg{position:absolute;left:148px;top:25px}
+
+.card{top:771px;width:468px;height:495px;border-radius:30px;overflow:hidden;display:block}
+#c1{left:92px;background:#d9d9d9}
+#c2{left:610px;background:#d9d9d9}
+#c3{left:1128px;background:#040404;overflow:visible}
+.card img{position:absolute;display:block}
+#c1 img,#c2 img{left:0;top:0;width:468px;height:495px}
+#m3{left:0;top:53px;width:312px;height:442px}
+.pt{top:1294px;font-weight:500;font-size:36px;color:#362424}
+.pd{top:1353px;width:372px;font-size:24px;color:#362424;white-space:normal;line-height:normal}
+:focus-visible{outline:3px solid #362424;outline-offset:4px}
+@media (prefers-reduced-motion:reduce){#cta{transition:none}}
+</style>
+</head>
+<body>
+<div id="fit">
+<main id="stage">
+  <div id="dots" aria-hidden="true"></div>
+
+  <a id="logo" href="#home" aria-label="Home"><img src="assets/logo.png" alt=""></a>
+  <a class="nav t wix" style="left:929px" href="#home">Home</a>
+  <a class="nav t wix" style="left:1097px" href="#projects">Projects</a>
+  <a class="nav t wix" style="left:1285px" href="resume.pdf">Resume</a>
+
+  <span id="home" style="left:0;top:0"></span>
+  <img id="avatar" src="assets/avatar.png" alt="" onerror="this.removeAttribute('src')">
+  <p id="hi" class="t wix">Hi, Swashika here ☺️</p>
+  <h1 id="h1" class="t funnel">Solving Problems</h1>
+  <p id="sub" class="t ail">that make people smile &amp; businesses scale</p>
+  <a id="cta" href="mailto:swasthika2002.13@gmail.com">
+    <span class="funnel">Let’s Talk</span>
+    <svg width="21" height="18" viewBox="0 0 21 18" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 9h18M12 2l7 7-7 7"/></svg>
+  </a>
+
+  <span id="projects" style="left:0;top:771px"></span>
+  <a id="c1" class="card" href="https://www.behance.net/jayaswasthika13" target="_blank" rel="noopener" aria-label="Voicetouch AI"><img src="assets/card1.png" alt="" onerror="this.remove()"></a>
+  <a id="c2" class="card" href="https://www.behance.net/jayaswasthika13" target="_blank" rel="noopener" aria-label="Arosx.ai"><img src="assets/card2.png" alt="" onerror="this.remove()"></a>
+  <a id="c3" class="card" href="https://www.behance.net/jayaswasthika13" target="_blank" rel="noopener" aria-label="ZenHR"><img id="m3" src="assets/card3-mockup.png" alt="" onerror="this.remove()"></a>
+
+  <h2 class="pt t funnel" style="left:96px">Voicetouch AI</h2>
+  <h2 class="pt t funnel" style="left:610px">Arosx.ai</h2>
+  <h2 class="pt t funnel" style="left:1128px">ZenHR</h2>
+  <p class="pd ail" style="left:96px">Product Designer who runs on <br>coffee, books, and good problems.</p>
+  <p class="pd ail" style="left:610px">Product Designer who runs on <br>coffee, books, and good problems.</p>
+  <p class="pd ail" style="left:1128px">Product Designer who runs on <br>coffee, books, and good problems.</p>
+</main>
+</div>
+<script>
+(function(){
+  var fit=document.getElementById('fit'),stage=document.getElementById('stage');
+  function size(){var s=document.documentElement.clientWidth/1440;stage.style.transform='scale('+s+')';fit.style.height=(3296*s)+'px';}
+  size();addEventListener('resize',size);
+})();
+</script>
+</body>
+</html>
