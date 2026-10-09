@@ -3,99 +3,254 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Swasthika | Product Designer</title>
-<meta name="description" content="Product and UI/UX designer solving problems that make people smile and businesses scale.">
+<title>Swasthika | Product &amp; UI/UX Designer</title>
+<meta name="description" content="Swasthika is a product and UI/UX designer based in Coimbatore, open to Product Designer roles in Bengaluru, Chennai and Hyderabad.">
 <link rel="icon" href="assets/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@400;500;600&family=Wix+Madefor+Display:wght@400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@400;500;600&family=Wix+Madefor+Display:wght@400;500&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add("js");</script>
 <style>
-/* Aileron isn't on Google Fonts. Drop Aileron-Regular.woff2 into /fonts to use it; otherwise the fallback is used. */
-@font-face{font-family:"Aileron";font-weight:400;src:url("fonts/Aileron-Regular.woff2") format("woff2");font-display:swap}
-*{box-sizing:border-box;margin:0;padding:0}
-html,body{background:#f8f8f8}
-body{overflow-x:hidden}
-#fit{position:relative;width:100%;overflow:hidden}
-/* Figma frame "Desktop - 1": 1440 x 3296 */
-#stage{position:absolute;left:0;top:0;width:1440px;height:3296px;overflow:hidden;background:#f8f8f8;transform-origin:0 0}
-#stage>*{position:absolute}
-#stage a{color:inherit;text-decoration:none}
-.t{white-space:nowrap;line-height:normal}
-.funnel{font-family:"Funnel Display",sans-serif}
-.wix{font-family:"Wix Madefor Display",sans-serif;font-weight:400}
-.ail{font-family:"Aileron","Wix Madefor Display",sans-serif;font-weight:400}
+:root{--dot:rgba(23,23,23,.04);--dot2:rgba(54,36,36,.5);--aside-bg:rgba(248,248,248,.7);--open-bg:#d8f3e6;--open-fg:#1d5a3b;--btn-bg:#362424;--btn-fg:#fff;--foot-bg:#362424;--foot-fg:#f8f8f8;--bg:#f8f8f8;--ink:#362424;--text:#171717;--mut:#6d6262;--card:#fff;--line:rgba(54,36,36,.16);--soft:#efe9e6;--mint:#d8f3e6;--f:"Funnel Display","Helvetica Neue",Arial,sans-serif;--b:"Wix Madefor Display","Helvetica Neue",Arial,sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font:400 18px/1.55 var(--b);position:relative;overflow-x:hidden}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px;border-radius:6px}
+.layout{display:grid;grid-template-columns:340px 1fr;min-height:100vh}
+aside{position:sticky;top:0;height:100vh;border-right:1px solid var(--line);padding:28px 28px 28px;display:flex;flex-direction:column;gap:20px;background:var(--aside-bg);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.brand{display:flex;align-items:center;gap:14px;text-decoration:none}
+.brand img{width:56px;height:56px;display:block}
+.brand b{font:600 22px/1.1 var(--f);color:var(--ink);display:block}
+.brand span{font-size:14px;color:var(--mut)}
+.open{display:inline-flex;align-items:center;gap:8px;background:var(--open-bg);color:var(--open-fg);border-radius:100px;padding:6px 14px;font-size:14px;width:fit-content}
+.open::before{content:"";width:8px;height:8px;border-radius:50%;background:#2fa56a;animation:pulse 2s infinite}
+@keyframes pulse{50%{opacity:.35}}
+.menu{display:flex;flex-direction:column;gap:4px;font:500 20px var(--f)}
+.menu a{text-decoration:none;padding:2px 0;width:fit-content;border-bottom:2px solid transparent}.menu a:hover{border-color:var(--ink)}
+.detail{margin-top:auto;border-top:1px solid var(--line);padding-top:16px;font-size:15px;min-height:150px}
+.detail dl{display:grid;grid-template-columns:auto 1fr;gap:4px 14px}
+.detail dt{color:var(--mut)}.detail dd{font-weight:500;color:var(--ink)}
+.detail .ttl{font:600 20px var(--f);color:var(--ink);margin-bottom:8px}
+.btn{display:inline-block;background:var(--btn-bg);color:var(--btn-fg);font:500 18px var(--f);padding:12px 28px;border-radius:100px;text-decoration:none;text-align:center;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.o{background:transparent;color:var(--ink);border:2px solid var(--ink)}
+.acts{display:flex;gap:10px;flex-wrap:wrap}
+main{padding:56px clamp(24px,5vw,72px) 0;max-width:1100px}
+h1{font:600 clamp(40px,5.6vw,84px)/1.04 var(--f);color:var(--ink);letter-spacing:-.02em;animation:up .9s both}
+@keyframes up{from{opacity:0;transform:translateY(24px);filter:blur(6px)}to{opacity:1;transform:none;filter:none}}
+.lead{font-size:clamp(18px,1.6vw,22px);max-width:46ch;margin:28px 0;color:var(--text);animation:up .9s .15s both}
+.hero .acts{animation:up .9s .3s both}
+section{padding-top:104px}
+.lbl{font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);margin-bottom:12px}
+h2{font:600 clamp(30px,4vw,48px)/1.1 var(--f);color:var(--ink);margin-bottom:32px}
+.row{display:grid;grid-template-columns:1.1fr 1fr;gap:28px;align-items:center;padding:28px 0;border-top:1px solid var(--line);text-decoration:none;transition:padding .3s}
+.row:last-child{border-bottom:1px solid var(--line)}
+.row .n{font-size:14px;color:var(--mut)}
+.row h3{font:600 clamp(32px,4vw,56px)/1.05 var(--f);color:var(--ink);margin:6px 0 10px;letter-spacing:-.01em}
+.row p{color:var(--mut);max-width:34ch}
+.row .go{display:inline-block;margin-top:16px;font:500 17px var(--f);color:var(--ink);border-bottom:2px solid var(--ink)}
+.thumb{border-radius:24px;overflow:hidden;background:var(--soft);aspect-ratio:16/10}
+.thumb img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+@media (hover:hover){.row:hover .thumb img{transform:scale(1.05)}.row:hover h3{text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:8px}}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.about p{font-size:20px;max-width:34ch}
+.list{list-style:none}
+.list li{display:flex;justify-content:space-between;gap:16px;padding:16px 0;border-top:1px solid var(--line)}
+.list li:last-child{border-bottom:1px solid var(--line)}
+.list em{display:block;font-style:normal;color:var(--mut);font-size:16px;max-width:46ch;margin-top:4px}.list b{font:500 20px var(--f);color:var(--ink)}.list span{color:var(--mut);font-size:16px;text-align:right}
+.chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}.chips span{background:var(--soft);padding:8px 18px;border-radius:100px;font-size:16px}
+.contact{margin:120px calc(-1*clamp(24px,5vw,72px)) 0;background:var(--foot-bg);color:var(--foot-fg);padding:80px clamp(24px,5vw,72px) 48px}
+.contact h2{color:var(--foot-fg);margin-bottom:16px}
+.mail{font:500 clamp(22px,3.6vw,48px) var(--f);text-decoration:underline;text-underline-offset:8px;word-break:break-all}
+.social{display:flex;gap:24px;flex-wrap:wrap;margin-top:32px}.social a{font-size:18px}
+.contact small{display:block;margin-top:48px;opacity:.6;font-size:14px}
+.js .rv{opacity:0;transform:translateY(28px);transition:opacity .8s,transform .8s cubic-bezier(.2,.7,.2,1)}.js .rv.in{opacity:1;transform:none}
+@media (max-width:1000px){
+  .layout{display:block}
+  aside{position:static;height:auto;border:0;border-bottom:1px solid var(--line);flex-direction:row;flex-wrap:wrap;align-items:center;justify-content:space-between;padding:16px 20px;gap:12px}
+  .open{order:3}.detail,.menu .hide{display:none}
+  .menu{flex-direction:row;gap:18px;font-size:17px}
+  aside .acts{display:none}
+  main{padding:40px 20px 0}
+  section{padding-top:72px}
+  .row{grid-template-columns:1fr;padding:24px 0}
+  .about{grid-template-columns:1fr}
+  .contact{margin-left:-20px;margin-right:-20px;padding:64px 20px 40px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}h1,.lead,.hero .acts{animation:none}.js .rv{opacity:1;transform:none;transition:none}.open::before{animation:none}}
 
-/* dot grid: 100x100 ellipses 3.51x4.17, #171717 @ 3% */
-#dots{left:-470px;top:-20px;width:2786px;height:3306px;
-  background-image:radial-gradient(ellipse 1.756px 2.085px at 1.756px 2.085px,rgba(23,23,23,.03) 97%,transparent 100%);
-  background-size:28.1px 33.35px;pointer-events:none}
-
-#logo{left:39px;top:27px;width:82px;height:82px;display:block}
-#logo img{width:82px;height:82px;display:block}
-.nav{top:55px;font-size:20px;color:#171717;height:25px}
-.nav:hover{text-decoration:underline!important;text-underline-offset:5px}
-
-#avatar{left:524px;top:222px;width:78px;height:78px;border-radius:50%;object-fit:cover;background:#d9d9d9}
-#hi{left:620px;top:242px;font-size:32px;color:#362424}
-#h1{left:313px;top:321px;width:813px;text-align:center;font-weight:600;font-size:96px;color:#362424}
-#sub{left:379px;top:445px;width:682px;text-align:center;font-size:36px;color:#171717}
-
-#cta{left:616px;top:522px;width:209px;height:53px;border-radius:100px;background:#362424;color:#fff;display:block;transition:transform .15s}
-#cta:hover{transform:translateY(-2px)}
-#cta span{position:absolute;left:33px;top:0;line-height:53px;font-size:24px;font-weight:400;white-space:nowrap}
-#cta svg{position:absolute;left:148px;top:25px}
-
-.card{top:771px;width:468px;height:495px;border-radius:30px;overflow:hidden;display:block}
-#c1{left:92px;background:#d9d9d9}
-#c2{left:610px;background:#d9d9d9}
-#c3{left:1128px;background:#040404;overflow:visible}
-.card img{position:absolute;display:block}
-#c1 img,#c2 img{left:0;top:0;width:468px;height:495px}
-#m3{left:0;top:53px;width:312px;height:442px}
-.pt{top:1294px;font-weight:500;font-size:36px;color:#362424}
-.pd{top:1353px;width:372px;font-size:24px;color:#362424;white-space:normal;line-height:normal}
-:focus-visible{outline:3px solid #362424;outline-offset:4px}
-@media (prefers-reduced-motion:reduce){#cta{transition:none}}
+body::before{content:"";position:fixed;inset:-50%;width:200%;height:200%;will-change:transform;animation:grain .9s steps(10) infinite;z-index:60;pointer-events:none;opacity:.16;mix-blend-mode:multiply;
+ background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n' x='0' y='0' width='100%' height='100%'><feTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .21 0 0 0 0 .14 0 0 0 0 .14 0 0 0 1.6 -.15'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+aside{overflow:visible;z-index:5}
+.brand{display:block;text-decoration:none}.brand b{font:600 26px/1.1 var(--f);color:var(--ink);display:block}.brand span{font-size:14px;color:var(--mut)}
+.char{position:relative;width:min(100%,236px);margin:-4px 0 -6px}
+.char svg{display:block;width:100%;height:auto;overflow:visible}
+.char.m{display:none}
+.bubble{position:absolute;left:68%;top:-2%;z-index:8;width:max-content;max-width:190px;background:var(--card);border:2px solid var(--ink);border-radius:18px 18px 18px 4px;padding:8px 14px;font:500 15px/1.3 var(--f);color:var(--ink);box-shadow:3px 3px 0 var(--ink);transform-origin:0 100%}
+.bubble.pop{animation:pop .45s cubic-bezier(.2,1.4,.4,1)}
+@keyframes pop{from{opacity:0;transform:scale(.6) rotate(-4deg)}to{opacity:1;transform:none}}
+.ch .m{opacity:0;transition:opacity .2s}
+.s-idle .m-smile,.s-hello .m-smile{opacity:1}.s-curious .m-o{opacity:1}.s-focused .m-flat{opacity:1}.s-excited .m-big{opacity:1}
+.ch .head{transform-origin:620px 1100px;transform:translate(var(--hx,0px),var(--hy,0px)) rotate(var(--tilt,0deg));transition:transform .3s ease-out}
+.s-curious{--tilt:-4deg}.s-excited{--tilt:3deg}.s-focused{--tilt:1deg}
+.ch .eyes{transform-box:fill-box;transform-origin:center;transition:transform .12s}.ch .eyes.blink{transform:scaleY(.08)}
+.s-focused .eyes{transform:scaleY(.82)}.s-focused .eyes.blink{transform:scaleY(.08)}
+.ch .pupils{transform:translate(var(--px,0px),var(--py,0px));transition:transform .18s ease-out}
+.ch .bl,.ch .br{transform-box:fill-box;transform-origin:center;transition:transform .3s}
+.s-curious .bl{transform:translateY(-24px) rotate(-6deg)}.s-curious .br{transform:translateY(-4px)}
+.s-focused .bl{transform:translateY(16px) rotate(10deg)}.s-focused .br{transform:translateY(16px) rotate(-10deg)}
+.s-excited .bl,.s-excited .br,.s-hello .bl,.s-hello .br{transform:translateY(-20px)}
+.ch .glasses,.ch .prop{opacity:0;transition:opacity .25s}
+.s-focused .glasses,.s-curious .q,.s-excited .sp{opacity:1}
+.s-curious .q{animation:bob 1.4s ease-in-out infinite}.s-excited .sp{animation:tw .9s ease-in-out infinite alternate}
+@keyframes bob{50%{transform:translateY(-22px)}}@keyframes tw{from{opacity:.4}to{opacity:1}}
+.ch .cheek{opacity:.55;transition:opacity .3s}.s-excited .cheek,.s-hello .cheek{opacity:1}
+.hero{display:grid;grid-template-columns:1.9fr 1fr;gap:16px;align-items:center}
+.hero h1{font-size:clamp(34px,4vw,60px)}
+.shapes{position:relative;height:300px}
+.badge{position:absolute;right:16%;top:4%;width:min(10.5vw,150px);height:auto;background:#d8f3e6;border:2px solid var(--ink);border-radius:50%;box-shadow:3px 3px 0 var(--ink)}
+.badge .ring{transform-origin:60px 60px;animation:spin 20s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.note{position:absolute;left:14%;bottom:8%;rotate:-6deg;background:#fdf0dc;border:2px solid var(--ink);padding:10px 16px;font:500 17px/1.25 var(--f);color:#362424;box-shadow:3px 3px 0 var(--ink)}
+.shapes>*{animation:fl 6s ease-in-out infinite}.shapes>.note{animation-delay:-1s}
+@keyframes fl{50%{margin-top:-10px}}
+@media (max-height:820px){.detail{display:none}.char{width:176px}}
+@media (max-width:1000px){
+  .hero{grid-template-columns:1fr}.shapes{height:260px}
+  aside{position:relative}aside .char{display:none}.char.m{display:block;width:210px;margin:0 auto 8px}
+  .badge{width:110px;right:6%}.note{left:8%}
+  .bubble{left:60%}
+}
+@media (prefers-reduced-motion:reduce){.shapes>*,.badge .ring,.s-curious .q,.s-excited .sp,.bubble.pop{animation:none}.ch .head,.ch .pupils{transition:none}}
+.ch{color:var(--ink)}.sk-s{stroke:var(--bg)}.sk-f{fill:var(--bg)}
+@keyframes grain{0%,100%{transform:translate(0,0)}10%{transform:translate(-5%,-10%)}20%{transform:translate(-15%,5%)}30%{transform:translate(7%,-25%)}40%{transform:translate(-5%,25%)}50%{transform:translate(-15%,10%)}60%{transform:translate(15%,0)}70%{transform:translate(0,15%)}80%{transform:translate(3%,25%)}90%{transform:translate(-10%,10%)}}
+@media (prefers-reduced-motion:reduce){body::before{animation:none}}
 </style>
 </head>
 <body>
-<div id="fit">
-<main id="stage">
-  <div id="dots" aria-hidden="true"></div>
+<template id="chtpl"><svg class="ch s-idle" viewBox="160 140 970 990" role="img" aria-label="Illustration of Swasthika" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+<defs><filter id="lightink" color-interpolation-filters="sRGB"><feColorMatrix values="0 0 0 0 .945  0 0 0 0 .906  0 0 0 0 .894  0 0 0 1 0"/></filter><filter id="rough" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency=".05" numOctaves="2" seed="3" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="5"/></filter></defs>
+<g class="head"><image href="assets/me.png" x="160" y="140" width="970" height="990"/>
+<g filter="url(#rough)">
+<circle class="cheek" cx="505" cy="592" r="24" fill="#f6dcd8" stroke="none"/><circle class="cheek" cx="752" cy="592" r="24" fill="#f6dcd8" stroke="none"/>
+<g stroke-width="9"><path d="M494 513Q510 490 550 484"/><path d="M700 484Q745 488 760 512"/></g>
+<g class="eyes" fill="currentColor" stroke="none"><g class="pupils"><ellipse cx="547" cy="516" rx="18" ry="34"/><ellipse cx="707" cy="515" rx="18" ry="34"/></g></g>
+<g class="glasses" stroke-width="8"><circle cx="540" cy="515" r="62"/><circle cx="714" cy="515" r="62"/><path d="M600 500Q627 482 654 500M478 500L448 486M776 500L806 486"/></g>
+<path class="bl" d="M490 461Q535 439 580 461" stroke-width="10"/><path class="br" d="M675 461Q720 439 765 461" stroke-width="10"/>
+<path class="m m-smile" d="M597 599Q627 617 656 598" stroke-width="9"/><path class="m m-flat" d="M602 606H652" stroke-width="9"/><ellipse class="m m-o" cx="627" cy="606" rx="11" ry="14" fill="currentColor" stroke="none"/><path class="m m-big" d="M588 592Q627 646 666 592Z" fill="currentColor" stroke-width="6"/>
 
-  <a id="logo" href="#home" aria-label="Home"><img src="assets/logo.png" alt=""></a>
-  <a class="nav t wix" style="left:929px" href="#home">Home</a>
-  <a class="nav t wix" style="left:1097px" href="#projects">Projects</a>
-  <a class="nav t wix" style="left:1285px" href="resume.pdf">Resume</a>
+</g></g>
+<text class="prop q" x="900" y="300" font-size="170" font-family="Funnel Display,sans-serif" font-weight="600" fill="currentColor" stroke="none">?</text>
+<g class="prop sp" fill="currentColor" stroke="none"><path d="M930 250l14 32 32 14-32 14-14 32-14-32-32-14 32-14z"/><path d="M300 300l9 20 20 9-20 9-9 20-9-20-20-9 20-9z"/></g>
+</svg></template>
+<div class="layout">
+  <aside>
+    <a class="brand" href="#top" aria-label="Swasthika, top"><b>Swasthika</b><span>Product &amp; UI/UX Designer</span></a>
+    <div class="char" data-char></div>
+    <span class="open">Open to Product Designer roles</span>
+    <nav class="menu" aria-label="Main"><a href="#work">Work</a><a href="#about">About</a><a href="#experience">Experience</a><a href="#contact">Contact</a></nav>
+    <div class="detail" id="detail" aria-live="polite"></div>
+    <div class="acts"><a class="btn" href="resume.pdf" download="Jaya-Swasthika-Resume.pdf">Resume</a><a class="btn o" href="mailto:swasthika2002.13@gmail.com">Email</a></div>
+  </aside>
 
-  <span id="home" style="left:0;top:0"></span>
-  <img id="avatar" src="assets/avatar.png" alt="" onerror="this.removeAttribute('src')">
-  <p id="hi" class="t wix">Hi, Swashika here ☺️</p>
-  <h1 id="h1" class="t funnel">Solving Problems</h1>
-  <p id="sub" class="t ail">that make people smile &amp; businesses scale</p>
-  <a id="cta" href="mailto:swasthika2002.13@gmail.com">
-    <span class="funnel">Let’s Talk</span>
-    <svg width="21" height="18" viewBox="0 0 21 18" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 9h18M12 2l7 7-7 7"/></svg>
-  </a>
+  <main id="top">
+    <div class="hero">
+      <div>
+        <div class="char m" data-char></div>
+        <h1>Hi, I&rsquo;m Swasthika. I design products that turn complicated problems into simple, human interfaces.</h1>
+        <p class="lead">Product and UI/UX designer based in Coimbatore, looking for a Product Designer or UI/UX role in Bengaluru, Chennai or Hyderabad. Open to relocating.</p>
+        <div class="acts"><a class="btn" href="resume.pdf" download="Jaya-Swasthika-Resume.pdf">Download resume</a><a class="btn o" href="#work">See my work</a></div>
+      </div>
+      <div class="shapes" aria-hidden="true">
+        <svg class="badge" data-d="-8" viewBox="0 0 120 120"><defs><path id="ring" d="M60 60m-43 0a43 43 0 1 1 86 0a43 43 0 1 1-86 0"/></defs><g class="ring"><text font-family="Funnel Display,sans-serif" font-size="9.5" font-weight="500" fill="#362424"><textPath href="#ring" textLength="264" lengthAdjust="spacing">UI/UX DESIGN · PRODUCT DESIGN · GRAPHIC DESIGN ·</textPath></text></g><path d="M60 46l3.5 10.5L74 60l-10.5 3.5L60 74l-3.5-10.5L46 60l10.5-3.5z" fill="#362424"/></svg>
+        <div class="note" data-d="10">Product Designer<br>&amp; UI/UX ✦</div>
+      </div>
+    </div>
 
-  <span id="projects" style="left:0;top:771px"></span>
-  <a id="c1" class="card" href="https://www.behance.net/jayaswasthika13" target="_blank" rel="noopener" aria-label="Voicetouch AI"><img src="assets/card1.png" alt="" onerror="this.remove()"></a>
-  <a id="c2" class="card" href="https://www.behance.net/jayaswasthika13" target="_blank" rel="noopener" aria-label="Arosx.ai"><img src="assets/card2.png" alt="" onerror="this.remove()"></a>
-  <a id="c3" class="card" href="https://www.behance.net/jayaswasthika13" target="_blank" rel="noopener" aria-label="ZenHR"><img id="m3" src="assets/card3-mockup.png" alt="" onerror="this.remove()"></a>
+    <section id="work" class="rv">
+      <p class="lbl">Selected work</p><h2>Three projects, three kinds of problem.</h2>
+      <a class="row" data-mood="curious" data-say="How does a blind person use this?" href="voicetouch.html" data-t="VoiceTouch" data-r="Product Designer" data-k="Figma" data-y="12-week concept">
+        <div><span class="n">01</span><h3>VoiceTouch</h3><p>An AI-powered independence app for blind and visually impaired users, from research to a complete product definition.</p><span class="go">View case study</span></div>
+        <div class="thumb"><img src="assets/card1.png" alt="VoiceTouch app on a phone" onerror="this.remove()"></div>
+      </a>
+      <a class="row" data-mood="focused" data-say="Hmm, is this table clear enough?" href="zenhr.html" data-t="ZenHR" data-r="UI/UX Designer" data-k="Figma, Photoshop" data-y="Course project">
+        <div><span class="n">02</span><h3>ZenHR</h3><p>An HR management dashboard designed from scratch, in light and dark themes.</p><span class="go">View case study</span></div>
+        <div class="thumb"><img src="assets/zenhr/dash-light.webp" alt="ZenHR dashboard" onerror="this.remove()"></div>
+      </a>
+      <a class="row" data-mood="excited" data-say="Ding! A new lead just replied." href="arosx.html" data-t="Arosx.ai" data-r="UI/UX Designer" data-k="Figma" data-y="Landing page">
+        <div><span class="n">03</span><h3>Arosx.ai</h3><p>A landing page for a multi-language sales automation platform that works inside WhatsApp.</p><span class="go">View case study</span></div>
+        <div class="thumb"><img src="assets/card2.png" alt="Arosx.ai landing page" onerror="this.remove()"></div>
+      </a>
+    </section>
 
-  <h2 class="pt t funnel" style="left:96px">Voicetouch AI</h2>
-  <h2 class="pt t funnel" style="left:610px">Arosx.ai</h2>
-  <h2 class="pt t funnel" style="left:1128px">ZenHR</h2>
-  <p class="pd ail" style="left:96px">Product Designer who runs on <br>coffee, books, and good problems.</p>
-  <p class="pd ail" style="left:610px">Product Designer who runs on <br>coffee, books, and good problems.</p>
-  <p class="pd ail" style="left:1128px">Product Designer who runs on <br>coffee, books, and good problems.</p>
-</main>
+    <section id="about" class="rv" data-mood="idle" data-say="Design starts with people.">
+      <p class="lbl">About</p><h2>Design that starts with the person using it.</h2>
+      <div class="about">
+        <p>I&rsquo;m a UX and graphic designer with a B.Sc in Visual Communication and a UI/UX certification. I like turning research into screens that make people smile &amp; businesses scale.</p>
+        <div><ul class="list"><li><b>Education</b><span>B.Sc Visual Communication, Avinashilingam University</span></li><li><b>Certification</b><span>UI/UX, Buff Creative</span></li><li><b>Also</b><span>Freelance graphic design</span></li></ul></div>
+      </div>
+      <div class="chips"><span>Figma</span><span>Photoshop</span><span>Illustrator</span><span>Adobe XD</span><span>Framer</span><span>Webflow</span><span>Balsamiq</span></div>
+    </section>
+
+    <section id="experience" class="rv" data-mood="idle" data-say="A few places, lots learned.">
+      <p class="lbl">Experience</p><h2>Where I&rsquo;ve worked.</h2>
+      <ul class="list">
+        <li><div><b>Growth Partners Agency</b><em>Websites, landing pages, SaaS interfaces and dashboards, plus ad creatives averaging 3&times; return on ad spend.</em></div><span>Graphic &amp; Product Designer<br>Apr 2024 &ndash; Present</span></li>
+        <li><div><b>Magnil Technology</b><em>User flows, wireframes and high-fidelity UI with the product design team.</em></div><span>Product Design Intern<br>Feb 2025 &ndash; Jul 2025</span></li>
+        <li><div><b>Digifills Private Limited</b><em>Websites, landing pages and digital interfaces for multiple clients.</em></div><span>Graphic Designer<br>Dec 2022 &ndash; Oct 2023</span></li>
+      </ul>
+    </section>
+
+    <footer id="contact" class="contact" data-mood="excited" data-say="Say hi!">
+      <h2>Let&rsquo;s work together.</h2>
+      <a class="mail" href="mailto:swasthika2002.13@gmail.com">swasthika2002.13@gmail.com</a>
+      <div class="social"><a href="https://www.linkedin.com/in/jaya-swasthika" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.behance.net/jayaswasthika13" target="_blank" rel="noopener">Behance</a><a href="resume.pdf" download="Jaya-Swasthika-Resume.pdf">Resume</a></div>
+      <small>&copy; 2026 Jaya Swasthika M S</small>
+    </footer>
+  </main>
 </div>
 <script>
 (function(){
-  var fit=document.getElementById('fit'),stage=document.getElementById('stage');
-  function size(){var s=document.documentElement.clientWidth/1440;stage.style.transform='scale('+s+')';fit.style.height=(3296*s)+'px';}
-  size();addEventListener('resize',size);
+var d=document,b=d.body,det=d.getElementById("detail");
+var def='<p class="ttl">Based in Coimbatore</p><dl><dt>Tools</dt><dd>Figma, Adobe XD, Photoshop, Illustrator</dd><dt>Open to</dt><dd>Bengaluru, Chennai, Hyderabad</dd></dl>';
+det.innerHTML=def;
+d.querySelectorAll(".row").forEach(function(r){
+  r.addEventListener("mouseenter",function(){det.innerHTML='<p class="ttl">'+r.dataset.t+'</p><dl><dt>Role</dt><dd>'+r.dataset.r+'</dd><dt>Tools</dt><dd>'+r.dataset.k+'</dd><dt>Type</dt><dd>'+r.dataset.y+'</dd></dl>'});
+  r.addEventListener("mouseleave",function(){det.innerHTML=def});
+});
+var io=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add("in");io.unobserve(x.target)}})},{threshold:.08});
+d.querySelectorAll(".rv").forEach(function(s){io.observe(s)});
+if(matchMedia("(hover:hover)").matches&&!matchMedia("(prefers-reduced-motion:reduce)").matches){
+}
+})();
+
+(function(){
+var reduce=matchMedia("(prefers-reduced-motion:reduce)").matches,tpl=document.getElementById("chtpl"),I=[];
+document.querySelectorAll("[data-char]").forEach(function(h){
+  h.appendChild(tpl.content.cloneNode(true));var svg=h.querySelector("svg"),bub=document.createElement("div");bub.className="bubble";bub.setAttribute("aria-live","polite");h.appendChild(bub);
+  I.push({h:h,svg:svg,bub:bub,eyes:svg.querySelector(".eyes")});
+});
+var mood="idle",hover=null,base={m:"idle",t:"Hover over a project and watch me react."};
+function set(m,t){if(mood===m&&arguments.length<2)return;mood=m;I.forEach(function(c){c.svg.setAttribute("class","ch s-"+m);if(t!==undefined){c.bub.textContent=t;c.bub.classList.remove("pop");void c.bub.offsetWidth;c.bub.classList.add("pop")}})}
+function apply(){var x=hover||base;if(mood!==x.m||I[0].bub.textContent!==x.t)set(x.m,x.t)}
+set("idle","Hi, I\u2019m Swasthika!");
+setTimeout(function(){apply()},reduce?0:3800);
+document.querySelectorAll(".row").forEach(function(r){r.addEventListener("mouseenter",function(){hover={m:r.dataset.mood,t:r.dataset.say};apply()});r.addEventListener("mouseleave",function(){hover=null;apply()})});
+var T=[].slice.call(document.querySelectorAll("[data-mood]")),raf=0,started=false;
+function pick(){raf=0;if(!started)return;var mid=innerHeight/2,best=null,bd=1e9;
+ T.forEach(function(el){var r=el.getBoundingClientRect();if(r.bottom<0||r.top>innerHeight)return;var d=Math.abs((r.top+r.bottom)/2-mid);if(el.id==="contact"&&r.top<innerHeight*.7)d=0;if(d<bd){bd=d;best=el}});
+ base=best&&scrollY>200?{m:best.dataset.mood,t:best.dataset.say}:{m:"idle",t:"Hover over a project and watch me react."};apply()}
+addEventListener("scroll",function(){started=true;if(!raf)raf=requestAnimationFrame(pick)},{passive:true});
+if(!reduce){
+  addEventListener("pointermove",function(e){
+    I.forEach(function(c){var r=c.svg.getBoundingClientRect();if(!r.width)return;var cx=r.left+r.width*.5,cy=r.top+r.height*.38,dx=e.clientX-cx,dy=e.clientY-cy,d=Math.hypot(dx,dy)||1,k=Math.min(1,d/380),ux=dx/d,uy=dy/d;
+      c.svg.style.setProperty("--px",(ux*16*k)+"px");c.svg.style.setProperty("--py",(uy*12*k)+"px");c.svg.style.setProperty("--hx",(ux*14*k)+"px");c.svg.style.setProperty("--hy",(uy*9*k)+"px")});
+    var nx=e.clientX/innerWidth-.5,ny=e.clientY/innerHeight-.5;
+    document.querySelectorAll(".shapes [data-d]").forEach(function(el){var d=+el.dataset.d;el.style.translate=(nx*d*2)+"px "+(ny*d*2)+"px"});
+  },{passive:true});
+  (function bl(){setTimeout(function(){I.forEach(function(c){c.eyes.classList.add("blink")});setTimeout(function(){I.forEach(function(c){c.eyes.classList.remove("blink")})},140);bl()},2600+Math.random()*2800)})();
+}
 })();
 </script>
 </body>
