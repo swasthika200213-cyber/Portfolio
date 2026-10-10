@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ZenHR | Swasthika</title>
+<meta name="description" content="ZenHR: an HR management dashboard designed from scratch, in light and dark themes.">
+<link rel="icon" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@400;500;600&family=Wix+Madefor+Display:wght@400;500&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add("js")</script>
+<script></script>
+<style>
+:root{--bg:#f8f8f8;--ink:#362424;--text:#171717;--mut:#6d6262;--card:#fff;--line:rgba(54,36,36,.14);--soft:#efe9e6;--mint:#d8f3e6;--f:"Funnel Display","Helvetica Neue",Arial,sans-serif;--b:"Wix Madefor Display","Helvetica Neue",Arial,sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font:400 18px/1.55 var(--b);overflow-x:hidden}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px;border-radius:6px}
+.w{max-width:1100px;margin:0 auto;padding:0 24px}
+header{display:flex;justify-content:space-between;align-items:center;padding:24px 0}
+header img{width:56px;height:56px;display:block}
+.back{font-size:17px;text-decoration:none;border-bottom:2px solid transparent}.back:hover{border-color:var(--ink)}
+h1{font:600 clamp(48px,9vw,112px)/1.02 var(--f);color:var(--ink);letter-spacing:-.015em}
+h2{font:600 clamp(30px,4.5vw,52px)/1.1 var(--f);color:var(--ink);margin-bottom:28px}
+h3{font:500 22px/1.3 var(--f);color:var(--ink)}
+.lbl{font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);margin-bottom:10px}
+.tag{font:400 clamp(20px,2.4vw,28px)/1.35 var(--f);max-width:34ch;margin-top:20px}
+.meta{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px;padding-top:24px;border-top:1px solid var(--line)}
+.meta b{display:block;font:500 20px var(--f);color:var(--ink)}
+.hero-img{margin-top:40px;border-radius:28px;overflow:hidden;background:#d9d9d9}
+.hero-img img{display:block;width:100%;height:auto;max-height:560px;object-fit:cover}
+section{padding:88px 0 0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:32px}
+.box.dark{background:var(--ink);color:#f8f8f8;border-color:var(--ink)}.box.dark h3{color:#fff}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:24px}
+.stat{padding:24px 0;border-top:2px solid var(--ink)}
+.stat b{display:block;font:600 clamp(44px,6vw,72px)/1 var(--f);color:var(--ink)}
+.stat span{display:block;margin-top:8px;color:var(--mut);font-size:16px}
+/* timeline */
+.tl{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
+.tl button{font:inherit;text-align:left;cursor:pointer;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px;color:var(--text);transition:.2s}
+.tl button small{display:block;font-size:13px;color:var(--mut)}.tl button span{font:500 17px var(--f)}
+.tl button:hover{border-color:var(--ink)}
+.tl button[aria-selected=true]{background:var(--ink);color:#fff;border-color:var(--ink)}.tl button[aria-selected=true] small{color:#d9c9c4}
+.panel{margin-top:16px;background:var(--card);border:1px solid var(--line);border-radius:24px;padding:32px}
+.panel p{max-width:60ch}
+.bar{height:6px;border-radius:6px;background:var(--soft);margin-top:20px;overflow:hidden}.bar i{display:block;height:100%;background:var(--ink);transition:width .4s}
+/* table */
+.tbl{width:100%;border-collapse:collapse;font-size:16px;margin-top:8px}
+.tbl th,.tbl td{text-align:left;padding:12px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl th{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--mut);font-weight:500}
+.scroll{overflow-x:auto}
+.quote{font:500 clamp(24px,3.4vw,40px)/1.25 var(--f);color:var(--ink);max-width:24ch;margin:0 0 12px}
+.quote-by{color:var(--mut);font-size:16px}
+/* persona */
+.tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px}
+.tabs button{font:500 18px var(--f);cursor:pointer;background:var(--card);border:1px solid var(--line);border-radius:100px;padding:12px 24px;color:var(--text)}
+.tabs button[aria-selected=true]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.who{color:var(--mut);margin-bottom:24px;max-width:60ch}
+.journey{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:24px}
+.journey div{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;font-size:15px;line-height:1.45}
+.journey b{display:block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);margin-bottom:6px;font-weight:500}
+.swot{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.swot div{border-radius:20px;padding:24px;font-size:16px}
+.swot h4{font:600 20px var(--f);margin-bottom:6px;color:var(--ink)}
+.s{background:var(--mint)}.wk{background:#f6dcd8}.o{background:#e3eafc}.t{background:var(--soft)}
+/* steps */
+.steps{list-style:none;counter-reset:s;display:grid;gap:10px;margin-top:20px}
+.steps li{counter-increment:s;display:flex;gap:16px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 20px}
+.steps li::before{content:counter(s);flex:none;width:32px;height:32px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font:500 16px var(--f)}
+.chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.chips span{background:var(--soft);padding:6px 16px;border-radius:100px;font-size:15px}
+footer{margin-top:120px;background:var(--ink);color:#f8f8f8;padding:80px 0 56px}
+footer h2{color:#fff;margin-bottom:12px}
+footer .mail{font:500 clamp(22px,4vw,44px) var(--f);text-decoration:underline;text-underline-offset:8px}
+footer p{margin-top:32px;font-size:15px;opacity:.7}
+.js .rv{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}.js .rv.in{opacity:1;transform:none}
+@media (max-width:900px){.two,.stats,.meta{grid-template-columns:1fr}.tl{grid-template-columns:repeat(2,1fr)}.journey{grid-template-columns:1fr 1fr}.swot{grid-template-columns:1fr}section{padding-top:64px}body{font-size:17px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.js .rv{opacity:1;transform:none;transition:none}}
+
+.viewer{background:var(--soft);border-radius:28px;padding:20px}
+.vbar{display:flex;gap:10px;flex-wrap:wrap;justify-content:space-between;align-items:center;margin-bottom:16px}
+.vbar .tabs{margin:0}
+.vbar .tabs button{padding:10px 20px;font-size:16px}
+.vbar .tabs button:disabled{opacity:.4;cursor:not-allowed}
+.frame{border-radius:16px;overflow:hidden;background:#fff;border:1px solid var(--line)}
+.frame img{display:block;width:100%;height:auto;transition:opacity .25s}
+.sw{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
+.sw div{width:120px}.sw i{display:block;height:64px;border-radius:14px;border:1px solid var(--line)}.sw span{display:block;font-size:14px;margin-top:6px;color:var(--mut)}
+.nav3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}
+.nav3 div{background:var(--soft);border-radius:16px;padding:16px;font-size:16px}.nav3 b{display:block;font:500 13px var(--b);letter-spacing:.08em;text-transform:uppercase;color:var(--mut);margin-bottom:6px}
+.grid{display:flex;gap:16px;margin-top:20px;align-items:stretch}.gside{flex:0 0 22%;background:var(--soft);border-radius:12px;display:grid;place-items:center;text-align:center;font-size:15px;padding:16px 4px}.gmain{flex:1;display:flex;flex-direction:column;gap:12px}.gtop{background:var(--soft);border-radius:12px;padding:14px;text-align:center;font-size:15px}.gcols{flex:1;display:grid;grid-template-columns:repeat(12,1fr);gap:6px;min-height:150px}.gcols i{background:#DD3A41;opacity:.8;border-radius:6px}
+.note{font-size:15px;color:var(--mut);margin-top:16px}
+@media (max-width:900px){.nav3{grid-template-columns:1fr}}
+
+/* ---- theme (shared with the homepage) ---- */
+:root{--inv-bg:#362424;--inv-fg:#f8f8f8;--foot-bg:#362424;--foot-fg:#f8f8f8}
+.box.dark{background:var(--inv-bg);color:var(--inv-fg);border-color:var(--inv-bg)}.box.dark h3{color:var(--inv-fg)}
+footer{background:var(--foot-bg);color:var(--foot-fg)}footer h2{color:var(--foot-fg)}
+.tl button[aria-selected=true],.tabs button[aria-selected=true]{background:var(--inv-bg);color:var(--inv-fg);border-color:var(--inv-bg)}
+.tl button[aria-selected=true] small{color:inherit;opacity:.7}
+.jump button:hover,.jump button.on{background:var(--inv-bg);color:var(--inv-fg);border-color:var(--inv-bg)}
+.steps li::before{background:var(--inv-bg);color:var(--inv-fg)}
+.bbar{background:var(--soft)}.bbar span{background:var(--card)}
+.hr{display:flex;align-items:center;gap:18px}
+body::before{content:"";position:fixed;inset:-50%;width:200%;height:200%;z-index:60;pointer-events:none;will-change:transform;animation:grain .9s steps(10) infinite;opacity:.16;mix-blend-mode:multiply;
+ background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n' x='0' y='0' width='100%' height='100%'><feTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .21 0 0 0 0 .14 0 0 0 0 .14 0 0 0 1.6 -.15'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+@keyframes grain{0%,100%{transform:translate(0,0)}10%{transform:translate(-5%,-10%)}20%{transform:translate(-15%,5%)}30%{transform:translate(7%,-25%)}40%{transform:translate(-5%,25%)}50%{transform:translate(-15%,10%)}60%{transform:translate(15%,0)}70%{transform:translate(0,15%)}80%{transform:translate(3%,25%)}90%{transform:translate(-10%,10%)}}
+@media (prefers-reduced-motion:reduce){body::before{animation:none}}
+</style>
+</head>
+<body>
+<div class="w">
+  <header><a href="index.html" aria-label="Home"><img src="assets/logo.png" alt=""></a><div class="hr"><a class="back" href="index.html#projects">&larr; All projects</a></div></header>
+  <main>
+    <p class="lbl">Case study</p>
+    <h1>ZenHR</h1>
+    <p class="tag">An HR management dashboard designed from scratch, in light and dark themes.</p>
+    <div class="meta">
+      <div><p class="lbl">Role</p><b>UI/UX Designer</b></div>
+      <div><p class="lbl">Tools</p><b>Figma, Photoshop</b></div>
+      <div><p class="lbl">Type</p><b>Course project</b></div>
+    </div>
+    <p class="note">A concept dashboard I designed from scratch during my course. It is not affiliated with any company.</p>
+
+    <section class="rv" style="padding-top:48px">
+      <div class="viewer">
+        <div class="vbar">
+          <div class="tabs" role="tablist" aria-label="Screens" id="st"></div>
+          <div class="tabs" role="tablist" aria-label="Theme" id="tt"></div>
+        </div>
+        <div class="frame"><img id="shot" src="assets/zenhr/dash-light.webp" alt="ZenHR dashboard screen"></div>
+      </div>
+    </section>
+
+    <section class="rv">
+      <p class="lbl">01</p><h2>Problem &amp; solution</h2>
+      <p style="max-width:62ch;margin-bottom:28px">ZenHR is designed to streamline the daily operations of HR professionals. It provides a centralized platform to manage employee data, monitor attendance and performance, and handle payroll.</p>
+      <div class="two">
+        <div class="box"><h3>The problem</h3><p style="margin-top:12px">HR teams manage employee data, attendance, leave, payroll and performance across scattered tools and spreadsheets. That makes it slow and error-prone to get a clear, up-to-date picture of the organization, and routine tasks mean jumping between disconnected systems, costing HR staff time they need for higher-value work.</p></div>
+        <div class="box dark"><h3>The solution</h3><p style="margin-top:12px">A centralized HR dashboard that brings attendance, payroll, performance and employee data into one structured interface. Key metrics appear immediately on login, and persistent navigation keeps every workflow one click away, so HR staff act on information instead of hunting for it.</p></div>
+      </div>
+    </section>
+
+    <section class="rv">
+      <p class="lbl">02</p><h2>Information architecture</h2>
+      <p style="max-width:62ch">The dashboard is organized around the core HR workflows that need daily attention. Each lives as its own section in a persistent left-hand navigation, so users can move between workflows without losing track of where they are.</p>
+      <div class="nav3">
+        <div><b>Main</b>Dashboard, Employee, Attendance</div>
+        <div><b>People</b>Performance, Payroll, Documentation</div>
+        <div><b>Profile</b>Settings, Help</div>
+      </div>
+      <p style="max-width:62ch;margin-top:20px">The top-level dashboard leads with the metrics HR checks most often (total employees, present, absent and working from home) as quick-glance stat cards before any detailed table. This was deliberate: the busiest HR days start with a fast status check before deeper work, so the highest-frequency information is visible without scrolling or clicking in.</p>
+    </section>
+
+    <section class="rv">
+      <p class="lbl">03</p><h2>Wireframes</h2>
+      <p style="max-width:62ch;margin-bottom:24px">Early wireframes focused on getting the information hierarchy right before any visual styling: testing how much data could sit on the dashboard view without becoming overwhelming, and confirming that the sidebar could grow without feeling cluttered.</p>
+      <div class="frame" style="background:#2b2b2b"><img src="assets/zenhr/wireframes.webp" alt="Low-fidelity wireframes of the login and dashboard screens" loading="lazy"></div>
+    </section>
+
+    <section class="rv">
+      <p class="lbl">04</p><h2>Design decisions</h2>
+      <div class="two">
+        <div class="box"><h3>Answer the first question first</h3><p style="margin-top:12px">Four summary cards sit at the top, each with the change against last month and a small trend line, so the day&rsquo;s picture is clear before anything is read.</p></div>
+        <div class="box"><h3>One filter pattern everywhere</h3><p style="margin-top:12px">Employment type and period filters sit above the table on both the dashboard and payroll, with &ldquo;Add New Employee&rdquo; in the same place. The controls are learned once.</p></div>
+        <div class="box"><h3>Status you can&rsquo;t miss</h3><p style="margin-top:12px">Payroll status combines an icon, a word and a colour: a tick for success, an hourglass for pending, a cross for failed. It never relies on colour alone.</p></div>
+        <div class="box"><h3>Two themes, one structure</h3><p style="margin-top:12px">The layout is identical in light and dark. Light uses a deep maroon accent, and dark uses a brighter red on charcoal so the accent stays visible on each background.</p></div>
+      </div>
+    </section>
+
+    <section class="rv">
+      <p class="lbl">05</p><h2>Design system</h2>
+      <div class="two">
+        <div class="box"><h3>Typography</h3><p style="font:600 clamp(48px,7vw,84px)/1 'Roboto','Helvetica Neue',Arial,sans-serif;color:var(--ink);margin:12px 0">Roboto</p><p>Chosen for its clean, modern look and high readability, and because its balanced structure suits the dark UI. Regular, Medium, Semibold, Bold.</p></div>
+        <div class="box"><h3>Colour</h3><p style="margin-top:8px">Deep neutrals with bold red accents for key actions and filters. Green and orange mark status.</p>
+          <div class="sw"><div><i style="background:#DD3A41"></i><span>#DD3A41</span></div><div><i style="background:#202020"></i><span>#202020</span></div><div><i style="background:#2E2E2E"></i><span>#2E2E2E</span></div><div><i style="background:#FFFFFF"></i><span>#FFFFFF</span></div></div>
+          <div class="chips"><span style="background:#e6f9e0;color:#2a8a14">Success</span><span style="background:#fde1e1;color:#b3262c">Failed</span><span style="background:#fdf0dc;color:#b86a0a">Pending</span></div></div>
+      </div>
+      <div class="box" style="margin-top:24px"><h3>12-column grid</h3><p style="margin-top:8px;color:var(--mut)">Keeps alignment consistent and scales across screen sizes.</p>
+        <div class="grid"><div class="gside">Side bar<br>260</div><div class="gmain"><div class="gtop">Top bar &middot; 80</div><div class="gcols"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div>
+        <p class="note">12 columns &middot; 20px gutter</p></div>
+      <p class="note" style="margin-top:24px">Icons: minimal line icons for quick recognition without distracting from the content.</p>
+    </section>
+  </main>
+</div>
+<footer>
+  <div class="w">
+    <h2>Let&rsquo;s talk</h2>
+    <a class="mail" href="mailto:swasthika2002.13@gmail.com">swasthika2002.13@gmail.com</a>
+    <p><a href="index.html#projects">&larr; Back to all projects</a> &nbsp;&middot;&nbsp; <a href="https://www.behance.net/jayaswasthika13" target="_blank" rel="noopener">Full case study on Behance</a></p>
+  </div>
+</footer>
+<script>
+(function(){
+var S=[["dash","Dashboard"],["payroll","Payroll"],["login","Login"]],T=["light","dark"],st={s:"dash",t:"light"},img=document.getElementById("shot");
+function mk(host,items,key,label){items.forEach(function(it){var v=Array.isArray(it)?it[0]:it,b=document.createElement("button");b.setAttribute("role","tab");b.textContent=label(it);b.dataset.v=v;b.onclick=function(){st[key]=v;draw()};host.appendChild(b)})}
+var sh=document.getElementById("st"),th=document.getElementById("tt");
+mk(sh,S,"s",function(i){return i[1]});mk(th,T,"t",function(t){return t[0].toUpperCase()+t.slice(1)});
+function draw(){var login=st.s==="login";[].forEach.call(sh.children,function(b){b.setAttribute("aria-selected",b.dataset.v===st.s)});
+ [].forEach.call(th.children,function(b){b.setAttribute("aria-selected",!login&&b.dataset.v===st.t);b.disabled=login});
+ var f=login?"login":st.s==="dash"?"dash-"+st.t:"payroll-"+st.t;img.style.opacity=.3;img.src="assets/zenhr/"+f+".webp";img.alt="ZenHR "+st.s+" screen"+(login?"":", "+st.t+" theme");img.onload=function(){img.style.opacity=1}}
+draw();
+var io=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add("in");io.unobserve(x.target)}})},{threshold:.1});
+document.querySelectorAll(".rv").forEach(function(s){io.observe(s)});
+})();
+</script>
+</body>
+</html>
