@@ -129,6 +129,13 @@ section{padding:120px 0 0}
 .sw b{font:500 22px var(--f)}.sw span{font:400 16px "Aileron",monospace;letter-spacing:.04em;opacity:.85}
 .scale{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:32px;padding-top:28px;border-top:1px solid var(--line)}
 .scale div{font-family:"Aileron","Helvetica Neue",Arial,sans-serif;color:var(--ink)}.scale small{display:block;margin-top:8px;font-size:14px;color:var(--mut);font-family:var(--b)}
+/* flowchart */
+.leg{display:flex;gap:22px;flex-wrap:wrap;font-size:15px;color:var(--mut);margin-bottom:14px}.leg span{display:inline-flex;align-items:center;gap:8px}
+.fcw{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:28px;padding:18px}
+#fc svg{display:block;width:100%;min-width:1100px;height:auto}
+#fc text{font-family:"Wix Madefor Display","Helvetica Neue",Arial,sans-serif}
+.hint{display:none;font-size:14px;color:var(--mut);margin-top:10px}
+@media (max-width:900px){.hint{display:block}}
 /* gallery */
 .gal{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
 .gal img{width:100%;height:auto;border-radius:24px;display:block;background:var(--soft)}
@@ -221,17 +228,14 @@ body::before{content:"";position:fixed;inset:-50%;width:200%;height:200%;z-index
 
     <section class="rv">
       <div class="head"><h2>User flow</h2><span>From first launch to the safety net</span></div>
-      <div class="flow">
-        <div class="n k">Open VoiceTouch</div><div class="ln"></div>
-        <div class="n">Three voice questions in the first 60 seconds</div><div class="ln"></div>
-        <div class="n m">App adapts to the user type</div><div class="ln"></div>
-        <div class="cols">
-          <div class="col"><div class="n">Navigation</div></div>
-          <div class="col"><div class="n">Reading</div><div class="ln"></div><div class="n">&ldquo;What is this?&rdquo;</div><div class="ln"></div><div class="n">Instant read aloud</div><div class="ln"></div><div class="n">10 free reads a day, then Pro</div></div>
-          <div class="col"><div class="n">Tasks</div><div class="ln"></div><div class="n">Reminders and calendar by voice</div></div>
-          <div class="col"><div class="n">Safety</div><div class="ln"></div><div class="n">&ldquo;Emergency&rdquo; or hold a button for 3 seconds</div><div class="ln"></div><div class="n">5-second cancel window</div><div class="ln"></div><div class="n">Alarm and SMS with live location</div><div class="ln"></div><div class="n m">Contact resolves, or &ldquo;I&rsquo;m safe&rdquo;</div></div>
-        </div>
+      <div class="leg" aria-hidden="true">
+        <span><svg width="26" height="16" viewBox="0 0 26 16"><circle cx="13" cy="8" r="7" fill="#362424"/></svg>Start</span>
+        <span><svg width="30" height="16" viewBox="0 0 30 16"><polygon points="5,1 29,1 25,15 1,15" fill="#d8f3e6" stroke="#362424"/></svg>Voice input</span>
+        <span><svg width="30" height="16" viewBox="0 0 30 16"><rect x="1" y="1" width="28" height="14" rx="4" fill="#fff" stroke="#362424"/></svg>Step</span>
+        <span><svg width="26" height="18" viewBox="0 0 26 18"><polygon points="13,1 25,9 13,17 1,9" fill="#fdf0dc" stroke="#362424"/></svg>Decision</span>
       </div>
+      <div class="fcw" tabindex="0" aria-label="VoiceTouch user flow chart. Scroll sideways on small screens."><div id="fc"></div></div>
+      <p class="hint">On a phone, scroll sideways to see the whole flow.</p>
     </section>
 
 
@@ -306,6 +310,47 @@ P.forEach(function(p,i){var b=document.createElement("button");b.setAttribute("r
 function ps(i){var p=P[i];[].forEach.call(pt.children,function(b,k){b.setAttribute("aria-selected",k===i)});
  pp.innerHTML='<div class="pg"><div class="id"><div><p class="lbl" style="color:#cdbdb8">Persona</p><div class="nm">'+p.n+'</div><p>'+p.a+'</p></div><p class="q">'+p.q+'</p></div><div class="pm"><div class="glass"><h3>Pain points</h3><ul class="ul">'+li(p.pain,"r")+'</ul></div><div class="glass"><h3>Motivation</h3><ul class="ul">'+li(p.mot,"g")+'</ul></div></div></div>'
  +'<div class="journey">'+p.j.map(function(x,k){return"<div><b>"+L[k]+"</b>"+x+"</div>"}).join("")+'</div><div class="swot"><div class="s"><h4>Strengths</h4>'+p.S+'</div><div class="wk"><h4>Weaknesses</h4>'+p.W+'</div><div class="o"><h4>Opportunities</h4>'+p.O+'</div><div class="t"><h4>Threats</h4>'+p.T+'</div></div>'}ps(0);
+
+/* flowchart */
+(function(){
+var INK="#362424",N=[
+["start",135,55,0,0,"Start"],["proc",135,115,150,44,"Splash screen"],["proc",135,175,150,44,"Voice walkthrough"],["dec",135,255,150,84,"New user?"],
+["inp",385,100,140,44,"Say your name"],["inp",545,100,140,44,"Say your number"],["inp",705,100,140,44,"OTP read aloud"],["dec",880,100,130,80,"OTP\ncorrect?"],["inp",1050,100,150,44,"Set a spoken\npasscode"],
+["inp",385,330,140,44,"Say your number"],["inp",545,330,140,44,"Say your\npasscode"],["dec",710,330,130,80,"Correct?"],["proc",880,330,150,44,"Forgot passcode?\nRecover with OTP"],
+["proc",1195,235,150,44,"Three voice\nquestions (60 s)"],["dec",1195,330,150,84,"User type?"],["proc",1148,440,105,44,"Expert:\ndepth + speed"],["proc",1262,440,105,44,"Needs guidance:\nsimple + safe"],
+["home",660,565,190,48,"Home\nvoice assistant"],
+["mod",230,670,150,44,"Navigation"],["mod",560,670,150,44,"Reading"],["mod",830,670,150,44,"Tasks"],["mod",1090,670,150,44,"Safety"],
+["dec",230,780,130,80,"On Pro?"],["proc",120,880,130,44,"Basic navigation\n(free)"],["proc",340,880,130,44,"Real-time\nnavigation (Pro)"],
+["inp",560,752,170,44,"Say \u201CWhat is this?\u201D"],["dec",560,850,160,84,"Under 10 free\nreads today?"],["proc",470,950,120,44,"Read aloud\ninstantly"],["proc",650,950,140,44,"Offer Pro:\nunlimited reads"],
+["inp",830,752,150,44,"Say a reminder\nor event"],["proc",830,850,170,44,"Saved to reminders\nand calendar"],
+["inp",1090,752,190,44,"Say \u201CEmergency\u201D or\nhold a button 3 s"],["proc",1090,835,150,44,"5-second\ncancel window"],["dec",1090,930,130,80,"Cancelled?"],["proc",900,1040,120,44,"Back to Home"],["proc",1090,1040,190,44,"Alarm + SMS with live\nlocation to two contacts"],["dec",1090,1150,170,90,"Contact resolves\nor \u201CI\u2019m safe\u201D?"],["proc",1090,1255,130,44,"Alarm stops"]];
+var F=[["Entry",30,20,210,350],["Sign up by voice",295,30,850,140],["Log in",295,275,700,135],["Onboarding",1085,180,250,330],["Home: voice assistant",30,520,1300,790]];
+var E=[
+[[135,81],[135,93]],[[135,137],[135,153]],[[135,197],[135,213]],
+[[210,255],[268,255],[268,100],[315,100]],[[135,297],[135,330],[315,330]],
+[[455,100],[475,100]],[[615,100],[635,100]],[[775,100],[815,100]],[[945,100],[975,100]],[[880,60],[880,44],[705,44],[705,78]],
+[[1125,100],[1195,100],[1195,213]],[[1195,257],[1195,288]],[[1195,372],[1195,395],[1148,395],[1148,418]],[[1195,395],[1262,395],[1262,418]],
+[[1148,462],[1148,490],[660,490],[660,541]],[[1262,462],[1262,490],[1148,490]],
+[[455,330],[475,330]],[[615,330],[645,330]],[[775,330],[805,330]],[[880,352],[880,388],[545,388],[545,352]],[[710,370],[710,490]],
+[[660,589],[660,620]],[[230,620],[1090,620],0],[[230,620],[230,648]],[[560,620],[560,648]],[[830,620],[830,648]],[[1090,620],[1090,648]],
+[[230,692],[230,740]],[[165,780],[120,780],[120,858]],[[295,780],[340,780],[340,858]],
+[[560,692],[560,730]],[[560,774],[560,808]],[[480,850],[470,850],[470,928]],[[640,850],[650,850],[650,928]],
+[[830,692],[830,730]],[[830,774],[830,828]],
+[[1090,692],[1090,730]],[[1090,774],[1090,813]],[[1090,857],[1090,890]],[[1025,930],[900,930],[900,1018]],[[1090,970],[1090,1018]],[[1090,1062],[1090,1105]],[[1090,1195],[1090,1233]],[[1175,1150],[1235,1150],[1235,1040],[1185,1040]]];
+var L=[["Yes",238,246],["No",196,322],["No: resend OTP",792,37],["Yes",960,92],["No",790,322],["Yes",724,430],["New passcode",712,404],["Expert",1148,388],["Needs guidance",1226,388],["No",140,772],["Yes",320,772],["Yes",462,842],["No",662,842],["Yes",1000,922],["No",1100,994],["Yes",1100,1214],["No: keep alerting",1160,1105]];
+function tx(x,y,t,sz,fill){var a=t.split("\n"),y0=y-((a.length-1)*sz*1.2)/2+sz*.35,o='<text x="'+x+'" y="'+y0+'" font-size="'+sz+'" text-anchor="middle" fill="'+fill+'">';a.forEach(function(l,i){o+='<tspan x="'+x+'"'+(i?' dy="'+sz*1.2+'"':'')+'>'+l+'</tspan>'});return o+'</text>'}
+var h='<svg viewBox="0 0 1340 1320" role="img" aria-label="Flowchart of the VoiceTouch user flow"><defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1L9 5L0 9z" fill="'+INK+'" opacity=".7"/></marker></defs>';
+F.forEach(function(f){h+='<rect x="'+f[1]+'" y="'+f[2]+'" width="'+f[3]+'" height="'+f[4]+'" rx="18" fill="'+INK+'" fill-opacity=".03" stroke="'+INK+'" stroke-opacity=".28" stroke-dasharray="6 5"/><text x="'+(f[1]+14)+'" y="'+(f[2]+22)+'" font-size="13" font-weight="600" fill="'+INK+'" fill-opacity=".7">'+f[0]+'</text>'});
+E.forEach(function(e){var p=e.filter(Array.isArray),d='M'+p.map(function(q){return q[0]+' '+q[1]}).join(' L'),na=e.length>p.length;h+='<path d="'+d+'" fill="none" stroke="'+INK+'" stroke-opacity=".62" stroke-width="1.6" stroke-linejoin="round"'+(na?'':' marker-end="url(#ar)"')+'/>'});
+N.forEach(function(n){var t=n[0],x=n[1],y=n[2],w=n[3],hh=n[4],s=n[5],a=w/2,b=hh/2,o='';
+ if(t==="start")o='<circle cx="'+x+'" cy="'+y+'" r="26" fill="'+INK+'"/>'+tx(x,y,s,13,"#fff");
+ else if(t==="proc"||t==="mod"||t==="home"){var fill=t==="home"?INK:t==="mod"?"#efe9e6":"#fff";o='<rect x="'+(x-a)+'" y="'+(y-b)+'" width="'+w+'" height="'+hh+'" rx="'+(t==="proc"?9:12)+'" fill="'+fill+'" stroke="'+INK+'" stroke-width="'+(t==="proc"?1.2:1.5)+'"/>'+tx(x,y,s,t==="home"?14:13,t==="home"?"#fff":INK)}
+ else if(t==="inp"){o='<polygon points="'+(x-a+14)+','+(y-b)+' '+(x+a)+','+(y-b)+' '+(x+a-14)+','+(y+b)+' '+(x-a)+','+(y+b)+'" fill="#d8f3e6" stroke="'+INK+'" stroke-width="1.2"/>'+tx(x,y,s,13,INK)}
+ else if(t==="dec"){o='<polygon points="'+x+','+(y-b)+' '+(x+a)+','+y+' '+x+','+(y+b)+' '+(x-a)+','+y+'" fill="#fdf0dc" stroke="'+INK+'" stroke-width="1.3"/>'+tx(x,y,s,12,INK)}
+ h+=o});
+L.forEach(function(l){h+='<text x="'+l[1]+'" y="'+l[2]+'" font-size="12" font-weight="600" fill="'+INK+'" fill-opacity=".75" text-anchor="middle">'+l[0]+'</text>'});
+document.getElementById("fc").innerHTML=h+'</svg>';
+})();
 /* reveal */
 var io=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add("in");io.unobserve(x.target)}})},{threshold:.12});
 document.querySelectorAll(".rv").forEach(function(s){io.observe(s)});
